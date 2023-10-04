@@ -1,0 +1,45 @@
+ja:
+  errors:
+    messages:
+      prohibited: により保存できませんでした
+
+  helpers:
+    pluralize:
+      one: つのエラー
+      other: 個のエラー
+
+  activerecord:
+    models:
+      book: 本  #g
+
+    attributes:
+      book:
+        author: 著者  #g
+        memo: メモ  #g
+        picture: 写真  #g
+        title: タイトル  #g
+
+  views:
+    common:
+      show: 詳細を見る
+      back: 一覧に戻る
+      edit: 編集する
+      new: 新規作成
+
+  books:
+    index:
+      books: 書籍一覧
+
+    show:
+      edit: 編集する
+      destroy: 削除する
+
+    edit:
+      edit: 編集画面
+
+    create:
+      success: 正常に作成されました。
+    update:
+      success: 正常に更新されました。
+    destroy:
+      success: 正常に削除されました。

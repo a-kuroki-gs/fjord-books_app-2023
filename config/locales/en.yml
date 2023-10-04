@@ -31,3 +31,47 @@
 
 en:
   hello: "Hello world"
+
+  errors:
+    messages:
+      prohibited: prohibited this book from being saved
+
+  helpers:
+    pluralize:
+      one: error
+      other: errors
+
+  activerecord:
+    models:
+      book: book
+
+    attributes:
+      book:
+        author: author
+        memo: memo
+        picture: picture
+        title: title
+
+  views:
+    common:
+      show: Show this book
+      back: Back to books
+      new: New book
+
+  books:
+    index:
+      books: Books
+
+    show:
+      edit: Edit this book
+      destroy: Destroy this book
+
+    edit:
+      edit: Editing book
+
+    create:
+      success: Book was successfully created.
+    update:
+      success: Book was successfully updated.
+    destroy:
+      success: Book was successfully destroyed.
