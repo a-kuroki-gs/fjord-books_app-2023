@@ -37,9 +37,11 @@ ja:
     edit:
       edit: 編集画面
 
-    create:
-      success: 正常に作成されました。
-    update:
-      success: 正常に更新されました。
-    destroy:
-      success: 正常に削除されました。
+  controllers:
+    common:
+      create:
+        success: "%{model}は正常に作成されました。"
+      update:
+        success: "%{model}は正常に更新されました。"
+      destroy:
+        success: "%{model}は正常に削除されました。"
