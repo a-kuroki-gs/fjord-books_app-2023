@@ -6,7 +6,7 @@
 
   <p>
     <strong><%= Book.human_attribute_name(:memo) %>:</strong>
-    <%= book.memo %>
+    <%= safe_join(book.memo.split("\n"),tag(:br)) %>
   </p>
 
   <p>
