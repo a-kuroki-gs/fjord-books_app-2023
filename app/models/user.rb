@@ -7,4 +7,9 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :books, dependent: :destroy
+
+  validates :name, presence: true
+  validates :post_code, presence: true, length: { is: 7 }, format: { with: /\A[0-9]+\z/ }
+  validates :address, presence: true
+  validates :self_introduction, presence: true
 end

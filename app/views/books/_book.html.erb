@@ -19,4 +19,8 @@
     <%= image_tag(book.picture_url) if book.picture.present? %>
   </p>
 
+  <p>
+    <strong><%= Book.human_attribute_name(:creator) %>:</strong>
+    <%= User.find(book.user_id).name %>
+  </p>
 </div>
