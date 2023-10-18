@@ -17,4 +17,6 @@ Rails.application.routes.draw do
   end
 
   root 'books#index'
+
+  mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
 end

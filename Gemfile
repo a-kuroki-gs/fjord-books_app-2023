@@ -92,3 +92,7 @@ gem 'i18n-generators'
 gem 'kaminari'
 
 gem 'rails-i18n'
+
+group :development do
+  gem 'letter_opener_web'
+end
