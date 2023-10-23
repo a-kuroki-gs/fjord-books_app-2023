@@ -29,6 +29,13 @@
   </div>
 
   <div>
+    <% unless controller.action_name == 'new' %>
+      <%= form.label :creator, style: "display: block" %>
+      <%= User.find(report.user_id).name %>
+    <% end %>
+  </div>
+
+  <div>
     <%= form.submit %>
   </div>
 <% end %>
