@@ -30,9 +30,16 @@ class CommentsController < ApplicationController
 
 #   end
 
-#   def destroy
+  def destroy
+    @comment = Comment.find(params[:id])
 
-#   end
+    @comment.destroy
+
+    respond_to do |format|
+      format.html { redirect_to report_url(@comment.imageable), notice: t('controllers.common.notice_destroy', name: Comment.model_name.human) }
+      format.json { head :no_content }
+    end
+  end
 
   private
 

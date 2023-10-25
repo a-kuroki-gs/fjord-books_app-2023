@@ -15,7 +15,7 @@
 <div id="comments" class="comment-items">
   <% @comments.each do |comment| %>
     <div class="show-item">
-      <%= render 'comment', comment: comment %>
+      <%= render 'comments/comment', imageable: @report, comment: comment %>
     </div>
     <br>
   <% end %>
@@ -23,7 +23,7 @@
 
 <h2><%= t('views.common.title_new', name: Comment.model_name.human.downcase) %></h2>
 
-<%= render 'comment_form', imageable: @report, comment: @comment %>
+<%= render 'comments/comment_form', imageable: @report, comment: @comment %>
 
 <nav class="page-nav">
   <%= link_to t('views.common.back', name: i18n_pluralize(Report.model_name.human.downcase)), reports_path %>
