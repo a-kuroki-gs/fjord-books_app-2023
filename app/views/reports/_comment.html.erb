@@ -1,0 +1,16 @@
+<div>
+  <p>
+    <%= User.find(comment.user_id).name %>
+  </p>
+
+  <p>
+    <strong><%= Comment.human_attribute_name(:content) %>:</strong>
+    <br>
+    <%= safe_join(comment.content.split("\n"),tag(:br)) %>
+  </p>
+
+  <p>
+    <strong><%= Comment.human_attribute_name(:created_at) %>:</strong>
+    <%= l comment.created_at, format: :long %>
+  </p>
+</div>

@@ -10,6 +10,21 @@
   <br>
 <% end %>
 
+<h1><%= t('views.common.title_index', name: Comment.model_name.human.downcase) %></h1>
+
+<div id="comments" class="comment-items">
+  <% @comments.each do |comment| %>
+    <div class="show-item">
+      <%= render 'comment', comment: comment %>
+    </div>
+    <br>
+  <% end %>
+</div>
+
+<h2><%= t('views.common.title_new', name: Comment.model_name.human.downcase) %></h2>
+
+<%= render 'comment_form', imageable: @report, comment: @comment %>
+
 <nav class="page-nav">
   <%= link_to t('views.common.back', name: i18n_pluralize(Report.model_name.human.downcase)), reports_path %>
 </nav>

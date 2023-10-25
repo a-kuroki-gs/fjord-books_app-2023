@@ -18,3 +18,11 @@
   display: inline-block;
   margin: 20px 0 10px 0;
 }
+
+.comment-items {
+  gap: var(--global-block-gap);
+  grid-template-columns: repeat(auto-fill, 280px);
+  font-size: var(--global-fz-sm);
+  line-height: var(--global-lh);
+  margin-bottom: var(--nav-mt);
+}
