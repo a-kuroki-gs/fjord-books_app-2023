@@ -26,3 +26,7 @@
   line-height: var(--global-lh);
   margin-bottom: var(--nav-mt);
 }
+
+h2 {
+  font-size: 80% of var(--global-title-fz);
+}
