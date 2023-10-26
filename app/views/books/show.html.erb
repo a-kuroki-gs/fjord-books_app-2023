@@ -4,9 +4,25 @@
   <%= render @book %>
 </div>
 
-<nav class="page-nav">
-  <%= link_to t('views.common.edit', name: Book.model_name.human.downcase), edit_book_path(@book) %> |
-  <%= link_to t('views.common.back', name: i18n_pluralize(Book.model_name.human.downcase)), books_path %>
+<%= button_to t('views.common.edit', name: Book.model_name.human.downcase), edit_book_path(@book) %>
+<%= button_to t('views.common.destroy', name: Book.model_name.human.downcase), @book, method: :delete %>
+<br>
 
-  <%= button_to t('views.common.destroy', name: Book.model_name.human.downcase), @book, method: :delete %>
+<h1><%= t('views.common.title_index', name: Comment.model_name.human.downcase) %></h1>
+
+<div id="comments" class="comment-items">
+  <% @comments.each do |comment| %>
+    <div class="show-item">
+      <%= render 'comments/comment', imageable: @book, comment: comment %>
+    </div>
+    <br>
+  <% end %>
+</div>
+
+<h2><%= t('views.common.title_new', name: Comment.model_name.human.downcase) %></h2>
+
+<%= render 'comments/comment_form', imageable: @book, comment: @comment %>
+
+<nav class="page-nav">
+  <%= link_to t('views.common.back', name: i18n_pluralize(Book.model_name.human.downcase)), books_path %>
 </nav>
