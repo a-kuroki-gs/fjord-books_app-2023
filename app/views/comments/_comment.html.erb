@@ -1,6 +1,8 @@
 <div>
   <p>
-    <%= User.find(comment.user_id).name %>
+    <strong><%= Comment.human_attribute_name(:creator) %>:</strong>
+    <% user = User.find(comment.user_id) %>
+    <%= user.name.presence || user.email %>
   </p>
 
   <p>
