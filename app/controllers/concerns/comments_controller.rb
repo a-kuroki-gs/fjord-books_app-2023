@@ -5,10 +5,6 @@ class CommentsController < ApplicationController
     @comment = Comment.new
   end
 
-#   def edit
-
-#   end
-
   def create
     @comment = @imageable.comments.build(comment_params)
     @comment.user_id = current_user.id
@@ -22,10 +18,6 @@ class CommentsController < ApplicationController
       end
     end
   end
-
-#   def update
-
-#   end
 
   def destroy
     @comment = Comment.find(params[:id])
