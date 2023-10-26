@@ -4,7 +4,7 @@
   <%= render @book %>
 </div>
 
-<%= button_to t('views.common.edit', name: Book.model_name.human.downcase), edit_book_path(@book) %>
+<%= button_to t('views.common.edit', name: Book.model_name.human.downcase), edit_book_path(@book), method: :get %>
 <%= button_to t('views.common.destroy', name: Book.model_name.human.downcase), @book, method: :delete %>
 <br>
 
