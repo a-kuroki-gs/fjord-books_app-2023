@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class MentioningReport < ApplicationRecord
-  has_many :mentions
-  has_many :mentioned_reports, through: :mentions
+  self.table_name = 'reports'
+  has_many :mentions, dependent: :destroy
+  has_many :mentioned_reports, through: :mentions, dependent: :destroy
 end
