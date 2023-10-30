@@ -6,7 +6,7 @@
 
   <p>
     <strong><%= Book.human_attribute_name(:memo) %>:</strong>
-    <%= book.memo %>
+    <%= safe_join(book.memo.split("\n"),tag(:br)) %>
   </p>
 
   <p>
@@ -18,5 +18,4 @@
     <strong><%= Book.human_attribute_name(:picture) %>:</strong>
     <%= image_tag(book.picture_url) if book.picture.present? %>
   </p>
-
 </div>
