@@ -27,7 +27,7 @@ ja:
         content: 本文
         creator: 投稿者
         created_at: 投稿日時
-        imageable: :activerecord.models.imageable
+        commentable: :activerecord.models.commentable
 
       report:
         comments: コメント

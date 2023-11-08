@@ -53,8 +53,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_24_094835) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "user_id"
-    t.integer "imageable_id"
-    t.string "imageable_type"
+    t.integer "commentable_id"
+    t.string "commentable_type"
     t.integer "report_id"
     t.integer "book_id"
     t.index ["book_id"], name: "index_comments_on_book_id"

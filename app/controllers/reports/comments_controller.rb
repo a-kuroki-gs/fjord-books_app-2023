@@ -2,7 +2,7 @@
 
 class Reports::CommentsController < CommentsController
   def create
-    @imageable = Report.find(params[:report_id])
+    @commentable = Report.find(params[:report_id])
 
     super
   end

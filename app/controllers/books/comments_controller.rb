@@ -2,7 +2,7 @@
 
 class Books::CommentsController < CommentsController
   def create
-    @imageable = Book.find(params[:book_id])
+    @commentable = Book.find(params[:book_id])
 
     super
   end
