@@ -8,7 +8,7 @@ class ReportsController < ApplicationController
   def show
     @report = Report.find(params[:id])
     @comment = Comment.new
-    @comments = @report.comments
+    @comments = @report.comments.order(:id)
   end
 
   def new
