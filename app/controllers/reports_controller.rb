@@ -2,7 +2,7 @@
 
 class ReportsController < ApplicationController
   def index
-    @reports = Report.all
+    @reports = Report.order(:id).page(params[:page])
   end
 
   def show
