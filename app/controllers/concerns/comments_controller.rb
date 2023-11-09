@@ -8,7 +8,6 @@ class CommentsController < ApplicationController
   def create
     @comment = @commentable.comments.build(comment_params)
     @comment.user_id = current_user.id
-    @comment.commentable_id = @commentable.id
 
     respond_to do |format|
       if @comment.save
