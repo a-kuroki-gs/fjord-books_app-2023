@@ -11,9 +11,9 @@ class CommentsController < ApplicationController
 
     respond_to do |format|
       if @comment.save
-        format.html { redirect_to report_url(@comment.commentable), notice: t('controllers.common.notice_create', name: Comment.model_name.human) }
+        format.html { redirect_to polymorphic_path(@comment.commentable), notice: t('controllers.common.notice_create', name: Comment.model_name.human) }
       else
-        format.html { redirect_to report_url(@comment.commentable), status: :unprocessable_entity }
+        format.html { redirect_to polymorphic_path(@comment.commentable), status: :unprocessable_entity }
       end
     end
   end
@@ -24,7 +24,7 @@ class CommentsController < ApplicationController
     @comment.destroy
 
     respond_to do |format|
-      format.html { redirect_to report_url(@comment.commentable), notice: t('controllers.common.notice_destroy', name: Comment.model_name.human) }
+      format.html { redirect_to polymorphic_path(@comment.commentable), notice: t('controllers.common.notice_destroy', name: Comment.model_name.human) }
     end
   end
 
