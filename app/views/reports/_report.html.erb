@@ -16,6 +16,6 @@
 
   <p>
     <strong><%= Report.human_attribute_name(:creator) %>:</strong>
-    <%= User.find(report.user_id).name %>
+    <%= User.find(report.user_id).display_name %>
   </p>
 </div>
