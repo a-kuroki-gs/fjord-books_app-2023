@@ -5,10 +5,12 @@ Rails.application.routes.draw do
   resources :users, only: %i(index show)
 
   resources :reports do
-    resources :comments, module: 'reports'
+    resources :comments, module: 'reports', only: :create
   end
 
   resources :books do
-    resources :comments, module: 'books'
+    resources :comments, module: 'books', only: :create
   end
+
+  resources :comments, only: [:new, :destroy]
 end
