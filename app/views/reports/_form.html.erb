@@ -22,20 +22,6 @@
   </div>
 
   <div>
-    <% unless controller.action_name == 'new' %>
-      <%= form.label :created_at, style: "display: block" %>
-      <%= report.created_at.strftime("%Y/%m/%d") %>
-    <% end %>
-  </div>
-
-  <div>
-    <% unless controller.action_name == 'new' %>
-      <%= form.label :creator, style: "display: block" %>
-      <%= User.find(report.user_id).name %>
-    <% end %>
-  </div>
-
-  <div>
     <%= form.submit %>
   </div>
 <% end %>
