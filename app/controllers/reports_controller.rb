@@ -22,6 +22,15 @@ class ReportsController < ApplicationController
     @report = current_user.reports.new(report_params)
 
     if @report.save
+      contents = @report.content.scan(/http:\/\/localhost:3000\/reports\/(\d{1,})/)
+      unless contents.empty?
+        contents.each do |content|
+          mention = Mention.new
+          mention.mentioning_report_id = content[0]
+          mention.mentioned_report_id = @report.id
+          mention.save
+        end
+      end
       redirect_to @report, notice: t('controllers.common.notice_create', name: Report.model_name.human)
     else
       render :new, status: :unprocessable_entity
@@ -30,6 +39,20 @@ class ReportsController < ApplicationController
 
   def update
     if @report.update(report_params)
+      mentions = Mention.where(mentioned_report_id: @report.id)
+      mentions.each do |mention|
+        mention.destroy
+      end
+
+      contents = @report.content.scan(/http:\/\/localhost:3000\/reports\/(\d{1,})/)
+      unless contents.empty?
+        contents.each do |content|
+          mention = Mention.new
+          mention.mentioning_report_id = content[0]
+          mention.mentioned_report_id = @report.id
+          mention.save
+        end
+      end
       redirect_to @report, notice: t('controllers.common.notice_update', name: Report.model_name.human)
     else
       render :edit, status: :unprocessable_entity
