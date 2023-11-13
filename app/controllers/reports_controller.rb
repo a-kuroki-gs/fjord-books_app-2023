@@ -32,32 +32,24 @@ class ReportsController < ApplicationController
   end
 
   def update
-    @report = Report.find(params[:id])
+    @report = current_user.reports.find(params[:id])
 
-    if @report.user_id == current_user.id
-      respond_to do |format|
-        if @report.update(report_params)
-          format.html { redirect_to report_url(@report), notice: t('controllers.common.notice_update', name: Report.model_name.human) }
-        else
-          format.html { render :edit, status: :unprocessable_entity }
-        end
+    respond_to do |format|
+      if @report.update(report_params)
+        format.html { redirect_to report_url(@report), notice: t('controllers.common.notice_update', name: Report.model_name.human) }
+      else
+        format.html { render :edit, status: :unprocessable_entity }
       end
-    else
-      redirect_to report_url(@report)
     end
   end
 
   def destroy
-    @report = Report.find(params[:id])
+    @report = current_user.reports.find(params[:id])
 
-    if @report.user_id == current_user.id
-      @report.destroy
+    @report.destroy
 
-      respond_to do |format|
-        format.html { redirect_to reports_url, notice: t('controllers.common.notice_destroy', name: Report.model_name.human) }
-      end
-    else
-      redirect_to report_url(@report)
+    respond_to do |format|
+      format.html { redirect_to reports_url, notice: t('controllers.common.notice_destroy', name: Report.model_name.human) }
     end
   end
 

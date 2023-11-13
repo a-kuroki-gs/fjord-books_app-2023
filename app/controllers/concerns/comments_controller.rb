@@ -19,16 +19,12 @@ class CommentsController < ApplicationController
   end
 
   def destroy
-    @comment = Comment.find(params[:id])
+    @comment = current_user.comments.find(params[:id])
 
-    if @comment.user_id == current_user.id
-      @comment.destroy
+    @comment.destroy
 
-      respond_to do |format|
-        format.html { redirect_to polymorphic_path(@comment.commentable), notice: t('controllers.common.notice_destroy', name: Comment.model_name.human) }
-      end
-    else
-      redirect_to polymorphic_path(@comment.commentable)
+    respond_to do |format|
+      format.html { redirect_to polymorphic_path(@comment.commentable), notice: t('controllers.common.notice_destroy', name: Comment.model_name.human) }
     end
   end
 
