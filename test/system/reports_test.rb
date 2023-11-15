@@ -24,8 +24,8 @@ class ReportsTest < ApplicationSystemTestCase
     visit reports_url
     click_on '日報の新規作成'
 
-    fill_in '内容', with: @report.content
-    fill_in 'タイトル', with: @report.title
+    fill_in 'タイトル', with: 'gitに苦戦'
+    fill_in '内容', with: '何だかひょろひょろは別に否によっているなば、私にも当時いっぱいなどあなたのお創設も若い得下さろるた。'
     click_on '登録する'
 
     assert_text '日報が作成されました。'
@@ -36,8 +36,8 @@ class ReportsTest < ApplicationSystemTestCase
     visit report_url(@report)
     click_on 'この日報を編集', match: :first
 
-    fill_in '内容', with: @report.content
-    fill_in 'タイトル', with: @report.title
+    fill_in 'タイトル', with: 'lsコマンドむずすぎへん？'
+    fill_in '内容', with: 'それも同年もっとその教育家というのの後がつけよただ。'
     click_on '更新する'
 
     assert_text '日報が更新されました。'
