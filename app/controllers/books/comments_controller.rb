@@ -6,4 +6,10 @@ class Books::CommentsController < CommentsController
 
     super
   end
+
+  private
+
+  def transform_commentable
+    @book = @commentable
+  end
 end

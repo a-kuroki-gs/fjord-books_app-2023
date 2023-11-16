@@ -6,4 +6,10 @@ class Reports::CommentsController < CommentsController
 
     super
   end
+
+  private
+
+  def transform_commentable
+    @report = @commentable
+  end
 end
