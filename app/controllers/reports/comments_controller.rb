@@ -9,7 +9,9 @@ class Reports::CommentsController < CommentsController
 
   private
 
-  def transform_commentable
+  def render_commentable_show(format)
     @report = @commentable
+    @comments = @report.comments.order(:id)
+    format.html { render 'reports/show', status: :unprocessable_entity }
   end
 end
