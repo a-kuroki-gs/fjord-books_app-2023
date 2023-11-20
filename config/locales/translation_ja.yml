@@ -3,6 +3,8 @@ ja:
     models:
       book: 本
       user: ユーザ
+      comment: コメント
+      report: 日報
 
     attributes:
       book:
@@ -10,9 +12,26 @@ ja:
         memo: メモ
         picture: 画像
         title: タイトル
+        comments: コメント
+
       user:
         name: 氏名
         postal_code: 郵便番号
         address: 住所
         self_introduction: 自己紹介文
         avatar: ユーザ画像
+        comments: コメント
+        email: Eメール
+
+      comment:
+        content: 本文
+        creator: 投稿者
+        created_at: 投稿日時
+        commentable: :activerecord.models.commentable
+
+      report:
+        comments: コメント
+        content: 本文
+        title: タイトル
+        created_at: 作成日時
+        creator: 作成者
