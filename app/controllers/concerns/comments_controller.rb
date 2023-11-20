@@ -13,7 +13,8 @@ class CommentsController < ApplicationController
       if @comment.save
         format.html { redirect_to polymorphic_path(@comment.commentable), notice: t('controllers.common.notice_create', name: Comment.model_name.human) }
       else
-        render_commentable_show(format)
+        @comments = @commentable.comments.order(:id)
+        format.html { render render_commentable_show, status: :unprocessable_entity }
       end
     end
   end
