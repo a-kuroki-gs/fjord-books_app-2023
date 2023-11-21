@@ -27,7 +27,7 @@ class ReportsController < ApplicationController
     end
     redirect_to @report, notice: t('controllers.common.notice_create', name: Report.model_name.human)
   rescue StandardError
-    flash[:alert] = '日報の保存に失敗しました。'
+    flash[:alert] = t('controllers.common.alert_save_failed', name: Report.model_name.human)
     render :new, status: :unprocessable_entity
   end
 
@@ -40,7 +40,7 @@ class ReportsController < ApplicationController
     end
     redirect_to @report, notice: t('controllers.common.notice_update', name: Report.model_name.human)
   rescue StandardError
-    flash[:alert] = '日報の保存に失敗しました。'
+    flash[:alert] = t('controllers.common.alert_save_failed', name: Report.model_name.human)
     render :edit, status: :unprocessable_entity
   end
 

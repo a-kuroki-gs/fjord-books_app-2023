@@ -5,7 +5,7 @@
 </div>
 
 <% if @report.mentioned_reports.exists? %>
-  <h2>この日報は以下の日報に言及されています</h2>
+  <h2><%= t('views.common.mentioned', name: Report.model_name.human) %></h2>
   <% @report.mentioned_reports.each do |report| %>
     <li>
       <%= link_to report.title, report_path(report) %>
