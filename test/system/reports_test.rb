@@ -28,7 +28,12 @@ class ReportsTest < ApplicationSystemTestCase
     fill_in '内容', with: '何だかひょろひょろは別に否によっているなば、私にも当時いっぱいなどあなたのお創設も若い得下さろるた。'
     click_on '登録する'
 
+    assert_selector 'h1', text: '日報の詳細'
     assert_text '日報が作成されました。'
+    assert_text 'gitに苦戦'
+    assert_text '何だかひょろひょろは別に否によっているなば、私にも当時いっぱいなどあなたのお創設も若い得下さろるた。'
+    assert_text 'alice'
+    assert_text '2023/11/21'
   end
 
   test 'should update Report' do
@@ -39,7 +44,12 @@ class ReportsTest < ApplicationSystemTestCase
     fill_in '内容', with: 'それも同年もっとその教育家というのの後がつけよただ。'
     click_on '更新する'
 
+    assert_selector 'h1', text: '日報の詳細'
     assert_text '日報が更新されました。'
+    assert_text 'lsコマンドむずすぎへん？'
+    assert_text 'それも同年もっとその教育家というのの後がつけよただ。'
+    assert_text 'alice'
+    assert_text '2023/11/21'
   end
 
   test 'should destroy Report' do
@@ -47,5 +57,6 @@ class ReportsTest < ApplicationSystemTestCase
     click_on 'この日報を削除', match: :first
 
     assert_text '日報が削除されました。'
+    assert_selector 'h1', text: '日報の一覧'
   end
 end
