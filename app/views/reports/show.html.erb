@@ -4,7 +4,7 @@
   <%= render @report %>
 </div>
 
-<% if Mention.where(mentioning_report_id: @report.id).exists? %>
+<% if @report.mentioned_reports.exists? %>
   <h2>この日報は以下の日報に言及されています</h2>
   <% @report.mentioned_reports.each do |report| %>
     <li>
