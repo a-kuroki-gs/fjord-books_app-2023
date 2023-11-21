@@ -6,7 +6,7 @@
 
 <% if @report.mentioned_reports.exists? %>
   <h2><%= t('views.common.mentioned', name: Report.model_name.human) %></h2>
-  <% @report.mentioned_reports.each do |report| %>
+  <% @report.mentioned_reports.order(id: :asc).each do |report| %>
     <li>
       <%= link_to report.title, report_path(report) %>
     </li>
