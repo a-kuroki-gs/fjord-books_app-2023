@@ -39,8 +39,7 @@ class ReportsController < ApplicationController
 
   def update
     if @report.update(report_params)
-      mentions = Mention.where(mentioned_report_id: @report.id)
-      mentions.each(&:destroy)
+      @report.mentioning_reports.destroy_all
 
       contents = @report.content.scan(%r{http://localhost:3000/reports/(\d{1,})})
       unless contents.empty?
