@@ -58,5 +58,6 @@ class ReportsTest < ApplicationSystemTestCase
 
     assert_text '日報が削除されました。'
     assert_selector 'h1', text: '日報の一覧'
+    assert_nil Report.find_by(id: @report.id)
   end
 end
