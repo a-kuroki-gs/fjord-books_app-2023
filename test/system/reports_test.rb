@@ -33,7 +33,7 @@ class ReportsTest < ApplicationSystemTestCase
     assert_text 'gitに苦戦'
     assert_text '何だかひょろひょろは別に否によっているなば、私にも当時いっぱいなどあなたのお創設も若い得下さろるた。'
     assert_text 'alice'
-    assert_text '2023/11/21'
+    assert_text Time.zone.today.strftime('%Y/%m/%d')
   end
 
   test 'should update Report' do
@@ -49,7 +49,7 @@ class ReportsTest < ApplicationSystemTestCase
     assert_text 'lsコマンドむずすぎへん？'
     assert_text 'それも同年もっとその教育家というのの後がつけよただ。'
     assert_text 'alice'
-    assert_text '2023/11/21'
+    assert_text Time.zone.today.strftime('%Y/%m/%d')
   end
 
   test 'should destroy Report' do
