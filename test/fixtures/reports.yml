@@ -1,11 +1,11 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  user: one
-  title: MyString
-  content: MyText
+  user: alice
+  title: 初日報です
+  content: 自分が聴いだのは近頃途中でおもにないうでし。
 
 two:
-  user: two
-  title: MyString
-  content: MyText
+  user: alice
+  title: CSS初級
+  content: すなわち言葉か不明か反抗にしですて、事実末見識にきまってならなかっためにご談判の十月で知れうです。
