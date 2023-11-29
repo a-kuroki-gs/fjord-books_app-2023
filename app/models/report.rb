@@ -24,6 +24,8 @@ class Report < ApplicationRecord
   def save_mention
     report_ids = content.scan(%r{http://localhost:3000/reports/(\d{1,})}).flatten
     reports = Report.where.not(id:).where(id: report_ids)
-    self.mentioning_reports += reports
+    unless self.mentioning_reports += reports
+      raise ActiveRecord::RecordNotSaved
+    end
   end
 end

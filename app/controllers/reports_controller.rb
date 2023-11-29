@@ -26,7 +26,7 @@ class ReportsController < ApplicationController
       @report.save_mention
     end
     redirect_to @report, notice: t('controllers.common.notice_create', name: Report.model_name.human)
-  rescue StandardError
+  rescue ActiveRecord::RecordNotSaved
     flash[:alert] = t('controllers.common.alert_save_failed', name: Report.model_name.human)
     render :new, status: :unprocessable_entity
   end
@@ -34,12 +34,12 @@ class ReportsController < ApplicationController
   def update
     ActiveRecord::Base.transaction do
       @report.update(report_params)
+      raise ActiveRecord::RecordNotSaved unless @report.mentioning_reports.destroy_all
 
-      @report.mentioning_reports.destroy_all
       @report.save_mention
     end
     redirect_to @report, notice: t('controllers.common.notice_update', name: Report.model_name.human)
-  rescue StandardError
+  rescue ActiveRecord::RecordNotSaved
     flash[:alert] = t('controllers.common.alert_save_failed', name: Report.model_name.human)
     render :edit, status: :unprocessable_entity
   end
