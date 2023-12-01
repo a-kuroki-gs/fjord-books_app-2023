@@ -20,6 +20,7 @@ class ReportsController < ApplicationController
 
   def create
     @report = current_user.reports.new(report_params)
+    result = @report.create_trunsaction
 
     ActiveRecord::Base.transaction do
       @report.save
@@ -32,9 +33,7 @@ class ReportsController < ApplicationController
   end
 
   def update
-    ActiveRecord::Base.transaction do
-      @report.update(report_params)
-      raise ActiveRecord::RecordNotSaved unless @report.mentioning_reports.destroy_all
+    result = @report.update_trunsaction(report_params)
 
       @report.save_mention
     end

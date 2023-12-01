@@ -26,4 +26,22 @@ class Report < ApplicationRecord
     reports = Report.where.not(id:).where(id: report_ids)
     raise ActiveRecord::RecordNotSaved unless self.mentioning_reports += reports
   end
+
+  def create_trunsaction
+    ActiveRecord::Base.transaction do
+      save
+      save_mention
+      true
+    end
+  end
+
+  def update_trunsaction(report_params)
+    ActiveRecord::Base.transaction do
+      update(report_params)
+      raise ActiveRecord::Rollback unless mentioning_reports.destroy_all
+
+      save_mention
+      true
+    end
+  end
 end
