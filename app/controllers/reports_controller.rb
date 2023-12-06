@@ -20,7 +20,7 @@ class ReportsController < ApplicationController
 
   def create
     @report = current_user.reports.new(report_params)
-    result = @report.create_trunsaction
+    result = @report.create_transaction
 
     if result
       redirect_to @report, notice: t('controllers.common.notice_create', name: Report.model_name.human)
@@ -31,7 +31,7 @@ class ReportsController < ApplicationController
   end
 
   def update
-    result = @report.update_trunsaction(report_params)
+    result = @report.update_transaction(report_params)
 
     if result
       redirect_to @report, notice: t('controllers.common.notice_update', name: Report.model_name.human)

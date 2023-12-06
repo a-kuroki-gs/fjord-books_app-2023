@@ -27,7 +27,7 @@ class Report < ApplicationRecord
     raise ActiveRecord::Rollback unless self.mentioning_reports += reports
   end
 
-  def create_trunsaction
+  def create_transaction
     ActiveRecord::Base.transaction do
       save
       save_mention
@@ -35,7 +35,7 @@ class Report < ApplicationRecord
     end
   end
 
-  def update_trunsaction(report_params)
+  def update_transaction(report_params)
     ActiveRecord::Base.transaction do
       update(report_params)
       raise ActiveRecord::Rollback unless mentioning_reports.destroy_all
