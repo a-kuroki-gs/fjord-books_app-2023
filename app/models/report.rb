@@ -29,7 +29,7 @@ class Report < ApplicationRecord
 
   def create_transaction
     ActiveRecord::Base.transaction do
-      save
+      save!
       save_mention
     end
   end
