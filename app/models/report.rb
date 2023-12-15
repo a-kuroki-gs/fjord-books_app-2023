@@ -24,14 +24,13 @@ class Report < ApplicationRecord
   def save_mention
     report_ids = content.scan(%r{http://localhost:3000/reports/(\d{1,})}).flatten
     reports = Report.where.not(id:).where(id: report_ids)
-    raise ActiveRecord::Rollback unless self.mentioning_reports += reports
+    self.mentioning_reports += reports
   end
 
   def create_transaction
     ActiveRecord::Base.transaction do
       save
       save_mention
-      true
     end
   end
 
