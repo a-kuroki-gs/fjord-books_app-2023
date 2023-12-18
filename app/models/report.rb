@@ -32,15 +32,20 @@ class Report < ApplicationRecord
       save!
       save_mention
     end
+    true
+  rescue ActiveRecord::RecordInvalid
+    false
   end
 
   def update_transaction(report_params)
     ActiveRecord::Base.transaction do
       update(report_params)
-      raise ActiveRecord::Rollback unless mentioning_reports.destroy_all
+      raise ActiveRecord::RecordNotDestroyed if mentioning_reports.destroy_all
 
       save_mention
-      true
     end
+    true
+  rescue ActiveRecord::RecordInvalid, ActiveRecord::RecordNotDestroyed
+    false
   end
 end
