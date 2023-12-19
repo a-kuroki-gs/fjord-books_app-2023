@@ -40,7 +40,8 @@ class Report < ApplicationRecord
   def update_transaction(report_params)
     ActiveRecord::Base.transaction do
       update(report_params)
-      raise ActiveRecord::RecordNotDestroyed if mentioning_reports.destroy_all
+      mentioning_reports.destroy_all
+      raise ActiveRecord::RecordNotDestroyed unless mentioning_reports.all?(&:destroyed?)
 
       save_mention
     end
